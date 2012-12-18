@@ -1,0 +1,17 @@
+HTTrack3.46+htsswf+htsjava launched on Mon, 17 Dec 2012 15:06:09 at http://demo.broadleafcommerce.org/heatclinic/ +*.png +*.gif +*.jpg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2010], %s -->" -P 192.168.29.200:80 -%l "en, en, *" http://demo.broadleafcommerce.org/heatclinic/ -O1 D:\WebSites\HotClinic +*.png +*.gif +*.jpg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+15:07:41	Error: 	"Connect Error" (-4) after 2 retries at link https://demo.broadleafcommerce.org/robots.txt (from demo.broadleafcommerce.org/heatclinic/)
+15:13:17	Error: 	"Not Found" (404) at link demo.broadleafcommerce.org/heatclinic/hot-sauces/js/libs/jquery-1.7.2.min.js (from demo.broadleafcommerce.org/heatclinic/hot-sauces/hoppin_hot_sauce;jsessionid=B44F635F1F625642A615B130B7E887D9)
+15:13:17	Error: 	"Connect Error" (-4) after 2 retries at link https://demo.broadleafcommerce.org/heatclinic/login (from demo.broadleafcommerce.org/heatclinic/)
+15:13:17	Error: 	"Connect Error" (-4) after 2 retries at link https://demo.broadleafcommerce.org/heatclinic/register (from demo.broadleafcommerce.org/heatclinic/)
+15:14:37	Error: 	"Not Found" (404) at link demo.broadleafcommerce.org/heatclinic/merchandise/js/libs/jquery-1.7.2.min.js (from demo.broadleafcommerce.org/heatclinic/merchandise/heat_clinic_mascot_mens)
+15:14:42	Error: 	"Connect Error" (-4) after 2 retries at link https://demo.broadleafcommerce.org/heatclinic/checkout (from demo.broadleafcommerce.org/heatclinic/cart;jsessionid=B44F635F1F625642A615B130B7E887D9)
+
+HTTrack Website Copier/3.46 mirror complete in 9 minutes 36 seconds : 557 links scanned, 544 files written (19250584 bytes overall) [8889935 bytes received at 15433 bytes/sec], 12494434 bytes transfered using HTTP compression in 435 files, ratio 15%, 10.7 requests per connection
+(6 errors, 0 warnings, 0 messages)
