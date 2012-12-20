@@ -7,6 +7,8 @@
   </head>
   <body>
   <div id="fb-root"></div>
+  
+  
 <script>
   // Additional JS functions here
   window.fbAsyncInit = function() {
@@ -57,11 +59,7 @@
      js.src = "//connect.facebook.net/en_US/all.js";
      ref.parentNode.insertBefore(js, ref);
    }(document));
-</script>
 
-<div id="profile_pics"></div>
-
-<script>
 var profilePicsDiv = document.getElementById('profile_pics');
 FB.getLoginStatus(function(response) {
   if (response.status != 'connected') {
@@ -87,15 +85,7 @@ FB.getLoginStatus(function(response) {
     FB.XFBML.parse(profilePicsDiv);
   });
 });
-</script>
-<button class="btn" id="fb-login-status">FB.getLoginStatus()</button>
-<button class="btn" id="fb-login-status-force">FB.getLoginStatus() force=true</button>
-<button class="btn" id="fb-get-auth-response">FB.getAuthResponse()</button>
-<button class="btn" id="fb-login">FB.login()</button>
-<button class="btn" id="fb-permissions">FB.login() with Permissions</button>
-<button class="btn" id="fb-logout">FB.logout()</button>
 
-<script>
 FB.Event.subscribe('auth.login', function(response) {
   Log.info('auth.login event handler', response);
 });
@@ -146,6 +136,16 @@ document.getElementById('fb-logout').onclick = function() {
   });
 };
 </script>
+
+<div id="profile_pics"></div>
+<button class="btn" id="fb-login-status">FB.getLoginStatus()</button>
+<button class="btn" id="fb-login-status-force">FB.getLoginStatus() force=true</button>
+<button class="btn" id="fb-get-auth-response">FB.getAuthResponse()</button>
+<button class="btn" id="fb-login">FB.login()</button>
+<button class="btn" id="fb-permissions">FB.login() with Permissions</button>
+<button class="btn" id="fb-logout">FB.logout()</button>
+
+
 
   </body>
   </html>
