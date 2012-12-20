@@ -1,15 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Demo Page for Facebook Login</title>
-  </head>
-  <body>
-  <div id="fb-root"></div>
-  
-  
-<script>
+<title>Demo Page for Facebook Login</title>
+</head>
+<body>
+	<div id="fb-root"></div>
+
+
+	<script>
   // Additional JS functions here
   window.fbAsyncInit = function() {
     FB.init({
@@ -19,14 +17,26 @@
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
     });
-
+    FB.Event.subscribe('auth.login', function(response) {
+    	  Log.info('auth.login event handler', response);
+    	});
+    	FB.Event.subscribe('auth.logout', function(response) {
+    	  Log.info('auth.logout event handler', response);
+    	});
+    	FB.Event.subscribe('auth.statusChange', function(response) {
+    	  Log.info('auth.statusChange event handler', response);
+    	});
+    	FB.Event.subscribe('auth.authResponseChange', function(response) {
+    	  Log.info('auth.authResponseChange event handler', response);
+    	});
+    		
     // Additional init code here
     FB.getLoginStatus(function(response) {
     	  if (response.status === 'connected') {
     	    // connected
     	  } else if (response.status === 'not_authorized') {
     	    // not_authorized
-      	    //login();
+      	   // login();
     	  } else {
     	    // not_logged_in
       	    //login();
@@ -38,7 +48,7 @@
 	    FB.login(function(response) {
 	        if (response.authResponse) {
 	            // connected
-	        	//testAPI();
+	        	testAPI();
 	        } else {
 	            // cancelled
 	        }
@@ -86,19 +96,6 @@ FB.getLoginStatus(function(response) {
   });
 });
 
-FB.Event.subscribe('auth.login', function(response) {
-  Log.info('auth.login event handler', response);
-});
-FB.Event.subscribe('auth.logout', function(response) {
-  Log.info('auth.logout event handler', response);
-});
-FB.Event.subscribe('auth.statusChange', function(response) {
-  Log.info('auth.statusChange event handler', response);
-});
-FB.Event.subscribe('auth.authResponseChange', function(response) {
-  Log.info('auth.authResponseChange event handler', response);
-});
-
 document.getElementById('fb-login-status').onclick = function() {
   FB.getLoginStatus(function(response) {
     Log.info('FB.getLoginStatus callback', response);
@@ -137,15 +134,17 @@ document.getElementById('fb-logout').onclick = function() {
 };
 </script>
 
-<div id="profile_pics"></div>
-<button class="btn" id="fb-login-status">FB.getLoginStatus()</button>
-<button class="btn" id="fb-login-status-force">FB.getLoginStatus() force=true</button>
-<button class="btn" id="fb-get-auth-response">FB.getAuthResponse()</button>
-<button class="btn" id="fb-login">FB.login()</button>
-<button class="btn" id="fb-permissions">FB.login() with Permissions</button>
-<button class="btn" id="fb-logout">FB.logout()</button>
+	<div id="profile_pics"></div>
+	<button class="btn" id="fb-login-status">FB.getLoginStatus()</button>
+	<button class="btn" id="fb-login-status-force">FB.getLoginStatus()
+		force=true</button>
+	<button class="btn" id="fb-get-auth-response">FB.getAuthResponse()</button>
+	<button class="btn" id="fb-login">FB.login()</button>
+	<button class="btn" id="fb-permissions">FB.login() with
+		Permissions</button>
+	<button class="btn" id="fb-logout">FB.logout()</button>
 
 
 
-  </body>
-  </html>
+</body>
+</html>
