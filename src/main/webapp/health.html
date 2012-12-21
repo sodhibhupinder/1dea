@@ -85,6 +85,15 @@
     
     
     <fb:shared-activity />
+    
+    <h1>Defaults</h1>
+<fb:comments href="http://www.fbrell.com/"></fb:comments>
+
+<script>
+  FB.Event.subscribe('comments.add', function(resp) {
+    console.log('Comment was added', resp);
+  });
+</script>
 
 </body>
 </html>
