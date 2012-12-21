@@ -1,6 +1,7 @@
 package com.csaweb.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,8 +52,14 @@ public class EnrollUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		response.getWriter().print(request.getAttributeNames().toString());
-		//response.getWriter().print("Access Token is"+request.getAttribute("at"));
+		response.getWriter().println(request.getAttributeNames().toString());
+		response.getWriter().println("Access Token is"+request.getAttribute("at"));
+		
+		response.setContentType("text/plain");
+		PrintWriter out = response.getWriter();
+		out.println("Testing Ajax Call from Javascript");
+		out.flush();
+		out.close();
 	}
 
 	@Override
