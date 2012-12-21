@@ -1,13 +1,20 @@
 package com.csaweb.servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 
+import javax.naming.InitialContext;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 /**
  * Servlet implementation class MyServlet
@@ -31,8 +38,10 @@ public class EnrollUser extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		Date d = new Date();
-
-		response.getWriter().print("Date is" + d.toString());
+		
+		response.getWriter().print("Date is" + d.toString() + testJndiDataSource());
+		testJndiDataSource();
+		
 		//response.getOutputStream().print("Date is" + d.toString());
 	}
 
@@ -46,4 +55,49 @@ public class EnrollUser extends HttpServlet {
 		//response.getWriter().print("Access Token is"+request.getAttribute("at"));
 	}
 
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub
+		super.init(config);
+		
+		
+	}
+	
+	public String testJndiDataSource() {
+		Connection conn = null;
+		Statement st = null;
+		ResultSet rs = null;
+		StringBuffer sb = new StringBuffer();
+		try {
+			InitialContext ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:jboss/datasources/MysqlDS");
+
+			// This works too
+			// Context envCtx = (Context) ctx.lookup("java:comp/env");
+			// DataSource ds = (DataSource) envCtx.lookup("jdbc/TestDB");
+
+			conn = ds.getConnection();
+
+			st = conn.createStatement();
+			rs = st.executeQuery("SELECT * FROM user_info");
+
+			while (rs.next()) {
+				String id = rs.getString("id");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				sb.append("ID: " + id + ", First Name: " + firstName
+						+ ", Last Name: " + lastName + "<br/>");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try { if (rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if (st != null) st.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+		}
+		return sb.toString();
+	}
+
+	
+	
 }

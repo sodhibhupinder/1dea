@@ -101,11 +101,11 @@
                     </security>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/MysqlDS" enabled="${mysql.enabled}" use-java-context="true" pool-name="MysqlDS" use-ccm="true">
-                    <connection-url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/${env.OPENSHIFT_APP_NAME}</connection-url>
+                    <connection-url>jdbc:mysql://127.6.124.129:3306/csaweb</connection-url>
                     <driver>mysql</driver>
                     <security>
-                      <user-name>${env.OPENSHIFT_MYSQL_DB_USERNAME}</user-name>
-                      <password>${env.OPENSHIFT_MYSQL_DB_PASSWORD}</password>
+                      <user-name>admin</user-name>
+                      <password>nkpTVr6m7685</password>
                     </security>
                     <validation>
                       <check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
