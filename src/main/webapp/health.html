@@ -38,20 +38,20 @@
     	    // connected
     	  } else if (response.status === 'not_authorized') {
     	    // not_authorized
-      	    login();
+      	   // login();
     	  } else {
     	    // not_logged_in
-      	    login();
+      	   // login();
     	  }
     	 });
 
     document.getElementById('fb-login').onclick = function() {
 		  FB.login(function(response) {
-		    Log.info('FB.login callback', response);
+			  console.log('FB.login callback', response);
 		    if (response.status === 'connected') {
-		      Log.info('User is logged in');
+		    	console.log('User is logged in');
 		    } else {
-		      Log.info('User is logged out');
+		    	console.log('User is logged out');
 		    }
 		  });
 		};
