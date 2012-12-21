@@ -44,9 +44,8 @@
       	    login();
     	  }
     	 });
-  };
 
-	document.getElementById('fb-login').onclick = function() {
+    document.getElementById('fb-login').onclick = function() {
 		  FB.login(function(response) {
 		    Log.info('FB.login callback', response);
 		    if (response.status === 'connected') {
@@ -56,6 +55,18 @@
 		    }
 		  });
 		};
+  };
+
+// 	document.getElementById('fb-login').onclick = function() {
+// 		  FB.login(function(response) {
+// 		    Log.info('FB.login callback', response);
+// 		    if (response.status === 'connected') {
+// 		      Log.info('User is logged in');
+// 		    } else {
+// 		      Log.info('User is logged out');
+// 		    }
+// 		  });
+// 		};
 
   function login() {
 	    FB.login(function(response) {
@@ -158,6 +169,7 @@
 <!-- 	<button class="btn" id="fb-logout">FB.logout()</button> -->
 
 <input type="button" class="btn-success" id="fb-login" value="login"/>
+
 
 </body>
 </html>
