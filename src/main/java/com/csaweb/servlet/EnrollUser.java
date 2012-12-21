@@ -40,8 +40,9 @@ public class EnrollUser extends HttpServlet {
 		
 		Date d = new Date();
 		
-		response.getWriter().print("Date is" + d.toString() + testJndiDataSource());
-		testJndiDataSource();
+		response.getWriter().println("Date is " + d.toString());
+		
+		response.getWriter().println("Testing datasource " + testJndiDataSource());
 		
 		//response.getOutputStream().print("Date is" + d.toString());
 	}
@@ -52,8 +53,8 @@ public class EnrollUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		response.getWriter().println(request.getAttributeNames().toString());
-		response.getWriter().println("Access Token is"+request.getAttribute("at"));
+		
+		response.getWriter().println("Access Token is "+request.getParameter("at"));
 		
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
@@ -82,7 +83,7 @@ public class EnrollUser extends HttpServlet {
 			// This works too
 			// Context envCtx = (Context) ctx.lookup("java:comp/env");
 			// DataSource ds = (DataSource) envCtx.lookup("jdbc/TestDB");
-
+			
 			conn = ds.getConnection();
 
 			st = conn.createStatement();
