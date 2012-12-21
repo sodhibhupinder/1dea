@@ -43,6 +43,7 @@ public class EnrollUser extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		response.getWriter().print(request.getAttributeNames().toString());
+		response.getWriter().print("Access Token is"+request.getAttribute("at"));
 	}
 
 }
