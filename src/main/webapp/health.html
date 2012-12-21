@@ -82,14 +82,14 @@
       $.ajax({
           type: "POST",
           dataType: "json", // what data type to expect from the server
-          url: "/EnrollUser",
+          url: "EnrollUser",
           data: postdata,
           success: function (data) {
               // do nothing
               alert('all good');
           },
           error: function (xhr, status, error) {
-              alert('error occured in FBConnect.ashx');
+              alert('error occured in invoking EnrollServlet' + error);
           }
       });
 

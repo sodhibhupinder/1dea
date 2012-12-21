@@ -1,6 +1,8 @@
 package com.csaweb.servlet;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +29,10 @@ public class EnrollUser extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		Date d = new Date();
+
+		response.getWriter().print("Date is" + d.toString());
 	}
 
 	/**
