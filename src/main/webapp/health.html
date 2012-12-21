@@ -39,7 +39,7 @@
 			  console.log('FB.login callback', response);
 		    if (response.status === 'connected') {
 		    	console.log('User is logged in');
-
+		    	ConnectFacebookUser(response.authResponse.accessToken);
 		    	
 		    } else {
 		    	console.log('User is logged out');
@@ -73,6 +73,28 @@
      js.src = "//connect.facebook.net/en_US/all.js";
      ref.parentNode.insertBefore(js, ref);
    }(document));
+
+
+  function ConnectFacebookUser(at) {
+      var postdata = "at=" + at;
+      alert('This is the access token : ' + at);
+
+      $.ajax({
+          type: "POST",
+          dataType: "json", // what data type to expect from the server
+          url: "/EnrollUser",
+          data: postdata,
+          success: function (data) {
+              // do nothing
+              alert('all good');
+          },
+          error: function (xhr, status, error) {
+              alert('error occured in FBConnect.ashx');
+          }
+      });
+
+      alert('finished');
+  }
 
 </script>
 
