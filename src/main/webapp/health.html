@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
 <title>Demo Page for Facebook Login</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 	<div id="fb-root"></div>
@@ -38,6 +39,14 @@
 			  console.log('FB.login callback', response);
 		    if (response.status === 'connected') {
 		    	console.log('User is logged in');
+		    	
+		    
+		    	    $.post('EnrollUser', function(response.authResponse) {
+		    	        alert(response.authResponse);
+		    	    });
+		    	
+
+		    	
 		    } else {
 		    	console.log('User is logged out');
 		    }
@@ -76,24 +85,24 @@
 
 <fb:login-button>Login</fb:login-button>
 
-<!-- <input type="button" class="btn-success" id="fb-login" value="login"/> -->
-<h2>Activity feed</h2>
-        <div class="facebook-plugin">
-          <fb:activity site="gaana.com" header="false" width="260" height="325" font="arial" border_color="#fff"></fb:activity>
-        </div>
+<!-- <!-- <input type="button" class="btn-success" id="fb-login" value="login"/> --> -->
+<!-- <h2>Activity feed</h2> -->
+<!--         <div class="facebook-plugin"> -->
+<!--           <fb:activity site="gaana.com" header="false" width="260" height="325" font="arial" border_color="#fff"></fb:activity> -->
+<!--         </div> -->
         
     
     
-    <fb:shared-activity />
+<!--     <fb:shared-activity /> -->
     
-    <h1>Defaults</h1>
-<fb:comments href="http://www.fbrell.com/"></fb:comments>
+<!--     <h1>Defaults</h1> -->
+<!-- <fb:comments href="http://www.fbrell.com/"></fb:comments> -->
 
-<script>
-  FB.Event.subscribe('comments.add', function(resp) {
-    console.log('Comment was added', resp);
-  });
-</script>
+<!-- <script> -->
+//   FB.Event.subscribe('comments.add', function(resp) {
+//     console.log('Comment was added', resp);
+//   });
+<!-- </script> -->
 
 </body>
 </html>
