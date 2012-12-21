@@ -91,8 +91,8 @@ Date d = new Date();
 
 			while (rs.next()) {
 				String id = rs.getString("id");
-				String firstName = rs.getString("first_name");
-				String lastName = rs.getString("last_name");
+				String firstName = rs.getString("user_first_name");
+				String lastName = rs.getString("user_last_name");
 				sb.append("ID: " + id + ", First Name: " + firstName
 						+ ", Last Name: " + lastName + "<br/>");
 			}
