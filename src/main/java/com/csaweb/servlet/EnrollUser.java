@@ -87,7 +87,7 @@ Date d = new Date();
 			conn = ds.getConnection();
 
 			st = conn.createStatement();
-			rs = st.executeQuery("SELECT * FROM user_info");
+			rs = st.executeQuery("SELECT * FROM csaweb.user_info");
 
 			while (rs.next()) {
 				String id = rs.getString("id");
@@ -97,11 +97,11 @@ Date d = new Date();
 						+ ", Last Name: " + lastName + "<br/>");
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			sb.append(ex.getMessage());
 		} finally {
-			try { if (rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
-			try { if (st != null) st.close(); } catch (SQLException e) { e.printStackTrace(); }
-			try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if (rs != null) rs.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+			try { if (st != null) st.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+			try { if (conn != null) conn.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
 		}
 		return sb.toString();
 	}
