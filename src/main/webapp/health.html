@@ -9,16 +9,7 @@
 
 	<script>
 
-	document.getElementById('fb-login').onclick = function() {
-		  FB.login(function(response) {
-		    Log.info('FB.login callback', response);
-		    if (response.status === 'connected') {
-		      Log.info('User is logged in');
-		    } else {
-		      Log.info('User is logged out');
-		    }
-		  });
-		};
+
   // Additional JS functions here
   window.fbAsyncInit = function() {
     FB.init({
@@ -54,6 +45,17 @@
     	  }
     	 });
   };
+
+	document.getElementById('fb-login').onclick = function() {
+		  FB.login(function(response) {
+		    Log.info('FB.login callback', response);
+		    if (response.status === 'connected') {
+		      Log.info('User is logged in');
+		    } else {
+		      Log.info('User is logged out');
+		    }
+		  });
+		};
 
   function login() {
 	    FB.login(function(response) {
