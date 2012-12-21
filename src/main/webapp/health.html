@@ -8,6 +8,17 @@
 
 
 	<script>
+
+	document.getElementById('fb-login').onclick = function() {
+		  FB.login(function(response) {
+		    Log.info('FB.login callback', response);
+		    if (response.status === 'connected') {
+		      Log.info('User is logged in');
+		    } else {
+		      Log.info('User is logged out');
+		    }
+		  });
+		};
   // Additional JS functions here
   window.fbAsyncInit = function() {
     FB.init({
@@ -144,6 +155,7 @@
 <!-- 		Permissions</button> -->
 <!-- 	<button class="btn" id="fb-logout">FB.logout()</button> -->
 
+<button class="btn btn-success" id="fb-login">Login</button>
 
 
 </body>
