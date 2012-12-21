@@ -19,18 +19,6 @@
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
     });
-//     FB.Event.subscribe('auth.login', function(response) {
-//     	  Log.info('auth.login event handler', response);
-//     	});
-//     	FB.Event.subscribe('auth.logout', function(response) {
-//     	  Log.info('auth.logout event handler', response);
-//     	});
-//     	FB.Event.subscribe('auth.statusChange', function(response) {
-//     	  Log.info('auth.statusChange event handler', response);
-//     	});
-//     	FB.Event.subscribe('auth.authResponseChange', function(response) {
-//     	  Log.info('auth.authResponseChange event handler', response);
-//     	});
     		
     // Additional init code here
     FB.getLoginStatus(function(response) {
@@ -56,17 +44,6 @@
 		  });
 		};
   };
-
-// 	document.getElementById('fb-login').onclick = function() {
-// 		  FB.login(function(response) {
-// 		    Log.info('FB.login callback', response);
-// 		    if (response.status === 'connected') {
-// 		      Log.info('User is logged in');
-// 		    } else {
-// 		      Log.info('User is logged out');
-// 		    }
-// 		  });
-// 		};
 
   function login() {
 	    FB.login(function(response) {
@@ -94,85 +71,16 @@
      ref.parentNode.insertBefore(js, ref);
    }(document));
 
-// var profilePicsDiv = document.getElementById('profile_pics');
-// FB.getLoginStatus(function(response) {
-//   if (response.status != 'connected') {
-//     profilePicsDiv.innerHTML = '<em>You are not connected</em>';
-//     return;
-//   }
-
-//   FB.api({ method: 'friends.get' }, function(result) {
-//     Log.info('friends.get response', result);
-//     var markup = '';
-//     var numFriends = result ? Math.min(5, result.length) : 0;
-//     if (numFriends > 0) {
-//       for (var i=0; i<numFriends; i++) {
-//         markup += (
-//           '<fb:profile-pic size="square" ' +
-//                           'uid="' + result[i] + '" ' +
-//                           'facebook-logo="true"' +
-//           '></fb:profile-pic>'
-//         );
-//       }
-//     }
-//     profilePicsDiv.innerHTML = markup;
-//     FB.XFBML.parse(profilePicsDiv);
-//   });
-// });
-
-// document.getElementById('fb-login-status').onclick = function() {
-//   FB.getLoginStatus(function(response) {
-//     Log.info('FB.getLoginStatus callback', response);
-//   });
-// };
-
-// document.getElementById('fb-login-status-force').onclick = function() {
-//   FB.getLoginStatus(function(response) {
-//     Log.info('FB.getLoginStatus force=true callback', response);
-//   }, true);
-// };
-
-// document.getElementById('fb-get-auth-response').onclick = function() {
-//   Log.info('FB.getAuthResponse', FB.getAuthResponse());
-// };
-
-// document.getElementById('fb-login').onclick = function() {
-//   FB.login(function(response) {
-//     Log.info('FB.login callback', response);
-//   });
-// };
-
-// document.getElementById('fb-permissions').onclick = function() {
-//   FB.login(
-//     function(response) {
-//       Log.info('FB.login with permissions callback', response);
-//     },
-//     { scope: 'publish_actions' }
-//   );
-// };
-
-// document.getElementById('fb-logout').onclick = function() {
-//   FB.logout(function(response) {
-//     Log.info('FB.logout callback', response);
-//   });
-// };
 </script>
 
-<!-- 	<div id="profile_pics"></div> -->
-<!-- 	<button class="btn" id="fb-login-status">FB.getLoginStatus()</button> -->
-<!-- 	<button class="btn" id="fb-login-status-force">FB.getLoginStatus() -->
-<!-- 		force=true</button> -->
-<!-- 	<button class="btn" id="fb-get-auth-response">FB.getAuthResponse()</button> -->
-<!-- 	<button class="btn" id="fb-login">FB.login()</button> -->
-<!-- 	<button class="btn" id="fb-permissions">FB.login() with -->
-<!-- 		Permissions</button> -->
-<!-- 	<button class="btn" id="fb-logout">FB.logout()</button> -->
+
+
 
 <input type="button" class="btn-success" id="fb-login" value="login"/>
 <h2>Activity feed</h2>
         <div class="facebook-plugin">
-          <fb:activity site="winowoman.com" header="false" width="260" height="325" font="arial" border_color="#fff"></fb:activity>
+          <fb:activity site="gaana.com" header="false" width="260" height="325" font="arial" border_color="#fff"></fb:activity>
         </div>
-
+<fb:login-button>Login</fb:login-button>
 </body>
 </html>
