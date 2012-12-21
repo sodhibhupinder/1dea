@@ -33,6 +33,7 @@ public class EnrollUser extends HttpServlet {
 		Date d = new Date();
 
 		response.getWriter().print("Date is" + d.toString());
+		response.getOutputStream().print("Date is" + d.toString());
 	}
 
 	/**
