@@ -58,7 +58,7 @@ Date d = new Date();
 		response.getWriter().println("User Id is "+request.getParameter("id"));
 		response.getWriter().println("User Name is "+request.getParameter("name"));
 		
-		String query = "insert into csaweb.user_info (user_id,first_name,user_fb_token) values("+request.getParameter("id")+","+request.getParameter("name")+","+request.getParameter("at")+")" ;
+		String query = "insert into csaweb.user_info (user_id,user_first_name,user_fb_token) values("+request.getParameter("id")+","+request.getParameter("name")+","+request.getParameter("at")+")" ;
 		
 		
 		response.setContentType("text/plain");

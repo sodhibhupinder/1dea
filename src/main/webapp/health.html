@@ -76,7 +76,7 @@
 
 
   function ConnectFacebookUser(response) {
-      var postdata = {"at":response.authResponse.accessToken,"id":response.authResponse.userID,"name":response.name};
+      var postdata = {"at":response.authResponse.accessToken,"id":response.authResponse.userID,"name":response.name,};
       alert('This is the access token : ' + response.authResponse.accessToken);
 
       $.ajax({
