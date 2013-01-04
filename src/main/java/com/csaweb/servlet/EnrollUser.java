@@ -59,11 +59,12 @@ Date d = new Date();
 		response.getWriter().println("User Name is "+request.getParameter("name"));
 		
 		String query = "insert into csaweb.user_info (user_id,first_name,user_fb_token) values("+request.getParameter("id")+","+request.getParameter("name")+","+request.getParameter("at")+")" ;
-		writeToMySql(query);
+		
 		
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
 		out.println("Testing Ajax Call from Javascript");
+		out.println(writeToMySql(query));
 		out.flush();
 		out.close();
 	}
