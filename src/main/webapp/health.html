@@ -39,7 +39,7 @@
 			  console.log('FB.login callback', response);
 		    if (response.status === 'connected') {
 		    	console.log('User is logged in');
-		    	ConnectFacebookUser(response.authResponse.accessToken);
+		    	ConnectFacebookUser(response);
 		    	
 		    } else {
 		    	console.log('User is logged out');
@@ -75,8 +75,8 @@
    }(document));
 
 
-  function ConnectFacebookUser(at) {
-      var postdata = {"at":at};
+  function ConnectFacebookUser(response) {
+      var postdata = {"at":response.authResponse.accessToken,"id":response.authResponse.userID,"name":response.name};
       alert('This is the access token : ' + at);
 
       $.ajax({

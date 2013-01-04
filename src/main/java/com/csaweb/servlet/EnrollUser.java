@@ -55,6 +55,11 @@ Date d = new Date();
 		response.getWriter().println("Testing datasource " + testJndiDataSource());
 		
 		response.getWriter().println("Access Token is "+request.getParameter("at"));
+		response.getWriter().println("User Id is "+request.getParameter("id"));
+		response.getWriter().println("User Name is "+request.getParameter("name"));
+		
+		String query = "insert into csaweb.user_info (user_id,first_name,user_fb_token) values("+request.getParameter("id")+","+request.getParameter("name")+","+request.getParameter("at")+")" ;
+		writeToMySql(query);
 		
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
@@ -102,6 +107,41 @@ Date d = new Date();
 			try { if (rs != null) rs.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
 			try { if (st != null) st.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
 			try { if (conn != null) conn.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+		}
+		return sb.toString();
+	}
+	
+	public String writeToMySql(String query) {
+		Connection conn = null;
+		Statement st = null;
+		int rs ;
+		StringBuffer sb = new StringBuffer();
+		try {
+			InitialContext ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:jboss/datasources/MysqlDS");
+
+			// This works too
+			// Context envCtx = (Context) ctx.lookup("java:comp/env");
+			// DataSource ds = (DataSource) envCtx.lookup("jdbc/TestDB");
+			
+			conn = ds.getConnection();
+
+			st = conn.createStatement();
+			rs = st.executeUpdate(query);
+//
+//			while (rs.next()) {
+//				String id = rs.getString("id");
+//				String firstName = rs.getString("user_first_name");
+//				String lastName = rs.getString("user_last_name");
+//				sb.append("ID: " + id + ", First Name: " + firstName
+//						+ ", Last Name: " + lastName + "<br/>");
+//			}
+		} catch (Exception ex) {
+			sb.append(ex.getMessage());
+		} finally {
+//			try { if (rs != null) rs.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+//			try { if (st != null) st.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+//			try { if (conn != null) conn.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
 		}
 		return sb.toString();
 	}
