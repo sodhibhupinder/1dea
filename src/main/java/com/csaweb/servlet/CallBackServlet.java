@@ -65,13 +65,7 @@ public class CallBackServlet extends HttpServlet {
 		      
 		  } catch (Exception e) { /*report an error*/ }
 
-		String jObj = gson.fromJson(jb.toString(),String.class); // this parses the json
-		JsonObject jo = gson.fromJson(reader, JsonObject.class);
-		if(jo!=null)
-		{
-			System.out.println("jo"+jo.getAsString());
-			
-		}
+		String jObj = gson.fromJson(jb.toString(),String.class); // this parses the jso
 		
 		System.out.println("jb"+jb.toString());
 		System.out.println("jObj"+jObj);
