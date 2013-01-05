@@ -68,7 +68,7 @@ Date d = new Date();
 		String token=request.getParameter("at");
 		User user = facebookClient.fetchObject("me", User.class);
 		
-		String query = "insert into csaweb.user_info (user_id,user_first_name,user_last_name,user_fb_token) values("+user.getId()+","+user.getFirstName()+","+user.getLastName()+","+token+")" ;
+		String query = "insert into csaweb.user_info (user_id,user_first_name,user_last_name,user_fb_token) values('"+user.getId()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+token+"')" ;
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
 		out.println("Testing Ajax Call from Javascript");
