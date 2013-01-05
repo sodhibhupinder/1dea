@@ -65,14 +65,14 @@ public class CallBackServlet extends HttpServlet {
 		      
 		  } catch (Exception e) { /*report an error*/ }
 
-		String jObj = gson.fromJson(jb.toString(),String.class); // this parses the jso
+		//String jObj = gson.fromJson(jb.toString(),String.class); // this parses the jso
 		
 		System.out.println("jb"+jb.toString());
-		System.out.println("jObj"+jObj);
+		//System.out.println("jObj"+jObj);
 		System.out.println("request.getParameter(id)"+request.getParameter("id"));
 		logger.log(Level.INFO, "request.getParameter(id)"+request.getParameter("id"));
 		logger.log(Level.INFO, "jb"+jb.toString());
-		logger.log(Level.INFO, "jObj"+jObj);
+		//logger.log(Level.INFO, "jObj"+jObj);
 			
 	}
 
