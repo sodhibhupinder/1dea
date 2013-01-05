@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
 
 /**
  * Servlet implementation class CallBackServlet
@@ -57,7 +59,12 @@ public class CallBackServlet extends HttpServlet {
 		  } catch (Exception e) { /*report an error*/ }
 
 		String jObj = gson.fromJson(jb.toString(),String.class); // this parses the json
-		
+		JsonObject jo = gson.fromJson(jb.toString(), JsonObject.class);
+		if(jo!=null)
+		{
+			System.out.println("jo"+jo.getAsString());
+			
+		}
 		
 		System.out.println("jb"+jb.toString());
 		System.out.println("jObj"+jObj);
