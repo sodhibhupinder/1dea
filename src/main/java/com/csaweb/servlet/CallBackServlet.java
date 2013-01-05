@@ -52,14 +52,15 @@ public class CallBackServlet extends HttpServlet {
 		Gson gson = new Gson();
 		StringBuffer jb = new StringBuffer();
 		  String line = null;
+		  BufferedReader reader=null;
 		  try {
-		    BufferedReader reader = request.getReader();
+		    reader = request.getReader();
 		    while ((line = reader.readLine()) != null)
 		      jb.append(line);
 		  } catch (Exception e) { /*report an error*/ }
 
 		String jObj = gson.fromJson(jb.toString(),String.class); // this parses the json
-		JsonObject jo = gson.fromJson(jb.toString(), JsonObject.class);
+		JsonObject jo = gson.fromJson(reader, JsonObject.class);
 		if(jo!=null)
 		{
 			System.out.println("jo"+jo.getAsString());
