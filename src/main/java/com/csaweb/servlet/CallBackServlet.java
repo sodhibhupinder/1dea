@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
@@ -55,11 +56,15 @@ public class CallBackServlet extends HttpServlet {
 		      jb.append(line);
 		  } catch (Exception e) { /*report an error*/ }
 
-		//String jObj = gson.fromJson(request.getReader().,String.class); // this parses the json
-		System.out.println("jb"+jb);
+		JsonObject jObj = gson.fromJson(jb.toString(),JsonObject.class); // this parses the json
+		JsonElement jsonelement=jObj.getAsJsonObject("entry").get("uid");
+		System.out.println("uid"+jsonelement.getAsString());
+		System.out.println("jb"+jb.toString());
+		System.out.println("jObj"+jObj);
 		System.out.println("request.getParameter(id)"+request.getParameter("id"));
 		logger.log(Level.INFO, "request.getParameter(id)"+request.getParameter("id"));
-		logger.log(Level.INFO, "jObj"+jb);
+		logger.log(Level.INFO, "jb"+jb.toString());
+		logger.log(Level.INFO, "jObj"+jObj);
 			
 	}
 
