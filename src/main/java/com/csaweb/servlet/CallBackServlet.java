@@ -56,9 +56,9 @@ public class CallBackServlet extends HttpServlet {
 		      jb.append(line);
 		  } catch (Exception e) { /*report an error*/ }
 
-		JsonObject jObj = gson.fromJson(jb.toString(),JsonObject.class); // this parses the json
-		JsonElement jsonelement=jObj.getAsJsonObject("entry").get("uid");
-		System.out.println("uid"+jsonelement.getAsString());
+		String jObj = gson.fromJson(jb.toString(),String.class); // this parses the json
+		
+		
 		System.out.println("jb"+jb.toString());
 		System.out.println("jObj"+jObj);
 		System.out.println("request.getParameter(id)"+request.getParameter("id"));
