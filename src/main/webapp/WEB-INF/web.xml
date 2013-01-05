@@ -4,6 +4,23 @@
     <servlet-name>health</servlet-name>
     <jsp-file>/health.jsp</jsp-file>
   </servlet>
+  	<servlet>
+		<servlet-name>TwitterLoginServlet</servlet-name>
+		<servlet-class>com.csaweb.servlet.twitter.TwitterLoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TwitterCallbackServlet</servlet-name>
+		<servlet-class>com.csaweb.servlet.twitter.TwitterCallbackServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>TwitterLoginServlet</servlet-name>
+		<url-pattern>/twitterLogin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TwitterCallbackServlet</servlet-name>
+		<url-pattern>/twitterCallback</url-pattern>
+	</servlet-mapping>
   <servlet-mapping>
     <servlet-name>health</servlet-name>
     <url-pattern>/health</url-pattern>
