@@ -1,5 +1,6 @@
 package com.csaweb.servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,11 +47,19 @@ public class CallBackServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Gson gson = new Gson();
-		String jObj = gson.fromJson(request.getParameter("user"),String.class); // this parses the json
-		System.out.println("jObj"+jObj);
+		StringBuffer jb = new StringBuffer();
+		  String line = null;
+		  try {
+		    BufferedReader reader = request.getReader();
+		    while ((line = reader.readLine()) != null)
+		      jb.append(line);
+		  } catch (Exception e) { /*report an error*/ }
+
+		//String jObj = gson.fromJson(request.getReader().,String.class); // this parses the json
+		System.out.println("jb"+jb);
 		System.out.println("request.getParameter(id)"+request.getParameter("id"));
 		logger.log(Level.INFO, "request.getParameter(id)"+request.getParameter("id"));
-		logger.log(Level.INFO, "jObj"+jObj);
+		logger.log(Level.INFO, "jObj"+jb);
 			
 	}
 
