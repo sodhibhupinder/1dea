@@ -31,7 +31,7 @@ public class CallBackServlet extends HttpServlet {
 		String hubChallenge= (String)request.getAttribute("hub.challenge");
 		String hubVerifyToken= (String)request.getAttribute("hub.verify_token");
 		
-		response.getWriter().print(hubChallenge);
+		response.getWriter().print(request.getParameter("hub.challenge"));
 	}
 
 	/**
