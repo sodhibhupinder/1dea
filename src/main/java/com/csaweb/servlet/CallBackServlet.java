@@ -55,8 +55,14 @@ public class CallBackServlet extends HttpServlet {
 		  BufferedReader reader=null;
 		  try {
 		    reader = request.getReader();
-		    while ((line = reader.readLine()) != null)
-		      jb.append(line);
+		    line = reader.readLine();
+		    while (line != null)   {
+		         // Print the content on the console
+		    	jb.append(line);
+		         line = reader.readLine();
+		    }
+		   
+		      
 		  } catch (Exception e) { /*report an error*/ }
 
 		String jObj = gson.fromJson(jb.toString(),String.class); // this parses the json
