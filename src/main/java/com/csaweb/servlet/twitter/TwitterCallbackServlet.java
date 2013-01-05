@@ -42,7 +42,7 @@ public class TwitterCallbackServlet extends HttpServlet {
 		        
 		        out.println("SCREEN NAME : " + twitter.getScreenName()+ "\n");
 		        
-		        // Direct Messages
+/*		        // Direct Messages
 		        out.println("Direct Messages......................"+ "\n");
 		        ResponseList<DirectMessage> directMessages = twitter.getDirectMessages();
 		        if ( directMessages != null && !directMessages.isEmpty() ) {
@@ -68,7 +68,7 @@ public class TwitterCallbackServlet extends HttpServlet {
 			    		out.println( sts.getText() + "\n");
 			    	}
 			    }
-			    
+		*/	    
 			    
 	        }catch(TwitterException te) {
 	        	te.printStackTrace();
