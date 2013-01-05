@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 /**
  * Servlet implementation class CallBackServlet
  */
@@ -38,7 +41,11 @@ public class CallBackServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		Gson gson = new Gson();
+		String jObj = gson.fromJson(request.getParameter("user"),String.class); // this parses the json
+		System.out.println("jObj"+jObj);
+			
 	}
 
 }
