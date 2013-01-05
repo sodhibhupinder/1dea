@@ -1,6 +1,9 @@
 package com.csaweb.servlet;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +19,7 @@ import com.google.gson.JsonObject;
 @WebServlet("/CallBackFB")
 public class CallBackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+       Logger logger = Logger.getLogger(CallBackServlet.class.getName());
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -45,6 +48,9 @@ public class CallBackServlet extends HttpServlet {
 		Gson gson = new Gson();
 		String jObj = gson.fromJson(request.getParameter("user"),String.class); // this parses the json
 		System.out.println("jObj"+jObj);
+		System.out.println("request.getParameter(id)"+request.getParameter("id"));
+		logger.log(Level.INFO, "request.getParameter(id)"+request.getParameter("id"));
+		logger.log(Level.INFO, "jObj"+jObj);
 			
 	}
 
