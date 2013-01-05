@@ -32,7 +32,18 @@
     	    // not_logged_in
       	   // login();
     	  }
-    	 });
+    	 }
+
+    FB.Event.subscribe('edge.create', function(response) {
+    	   $.ajax({
+    	   url: "https://csaweb-custo.rhcloud.com/Likecomment", // the url of your php script
+    	   context: document.body,
+    	   success: function(){
+    	      // if you want something to be executed when a result comes back
+    	                      }
+    	         });
+    	}
+	);
 
     document.getElementById('fb-login').onclick = function() {
 		  FB.login(function(response) {
