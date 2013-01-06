@@ -17,7 +17,7 @@
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true,  // parse XFBML
-      category   : "Product/service"
+      
     });
     		
     // Additional init code here
@@ -33,11 +33,11 @@
     	  }
     	 }
 
-FB.Event.subscribe('edge.create',
-    function(response) {
-        alert('You liked the URL: ' + response);
-    }
-);
+// FB.Event.subscribe('edge.create',
+//     function(response) {
+//         alert('You liked the URL: ' + response);
+//     }
+// );
 
 
     document.getElementById('fb-login').onclick = function() {
