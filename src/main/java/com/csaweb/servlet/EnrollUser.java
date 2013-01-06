@@ -84,7 +84,7 @@ Date d = new Date();
 		   for (CategorizedFacebookType liker : likes.getData()) 
 		   {
 			   
-			   String query = "insert into csaweb.user_info (user_id,object_id,object_type,post_id) values('"+user.getId()+"','"+liker.getId()+"','"+liker.getCategory()+"','"+liker.getName()+"')" ;
+			   String query = "insert into csaweb.like (user_id,object_id,object_type,post_id) values('"+user.getId()+"','"+liker.getId()+"','"+liker.getCategory()+"','"+liker.getName()+"')" ;
 			   logger.info(writeToMySql(query));
 		   }
 		   // 	logger.info(liker.getCategory());
