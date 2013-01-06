@@ -1,11 +1,15 @@
 package com.csaweb.servlet.twitter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.Statement;
 
+import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 import twitter4j.DirectMessage;
 import twitter4j.IDs;
@@ -14,6 +18,7 @@ import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
+import twitter4j.http.AccessToken;
 import twitter4j.http.RequestToken;
 
 
@@ -26,12 +31,15 @@ public class TwitterCallbackServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 	
 
+		AccessToken accessToken = null;
 		 Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
 	        RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
 	        String verifier = request.getParameter("oauth_verifier");
 	        try {
-	            twitter.getOAuthAccessToken(requestToken, verifier);
-	            request.getSession().removeAttribute("requestToken");
+	        	accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
+	            // Save the AccessToken
+	        	saveAccessToken(twitter.getScreenName(), accessToken.getToken(), accessToken.getTokenSecret());
+	        	request.getSession().removeAttribute("requestToken");
 	        } catch (TwitterException e) {
 	            throw new ServletException(e);
 	        }
@@ -78,4 +86,43 @@ public class TwitterCallbackServlet extends HttpServlet {
 	        
 	}
 
+	private void saveAccessToken(String twitterId, String token, String tokenSecret) {
+
+		Connection conn = null;
+			Statement st = null;
+			int rs ;
+			StringBuffer sb = new StringBuffer();
+			try {
+				InitialContext ctx = new InitialContext();
+				DataSource ds = (DataSource) ctx.lookup("java:jboss/datasources/MysqlDS");
+
+				String query = "insert into csaweb.TWITTER_TOKEN_INFO (TWITTER_ID, TOKEN, TOKEN_INFO) values(" + twitterId + "," + token + "," + tokenSecret + ")" ;
+				
+				// This works too
+				// Context envCtx = (Context) ctx.lookup("java:comp/env");
+				// DataSource ds = (DataSource) envCtx.lookup("jdbc/TestDB");
+				
+				conn = ds.getConnection();
+
+				st = conn.createStatement();
+				rs = st.executeUpdate(query);
+	//
+//				while (rs.next()) {
+//					String id = rs.getString("id");
+//					String firstName = rs.getString("user_first_name");
+//					String lastName = rs.getString("user_last_name");
+//					sb.append("ID: " + id + ", First Name: " + firstName
+//							+ ", Last Name: " + lastName + "<br/>");
+//				}
+			} catch (Exception ex) {
+				sb.append(ex.getMessage());
+			} finally {
+//				try { if (rs != null) rs.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+//				try { if (st != null) st.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+//				try { if (conn != null) conn.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+			}
+
+		
+
+	}
 }
