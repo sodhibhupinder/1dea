@@ -96,7 +96,7 @@ public class TwitterCallbackServlet extends HttpServlet {
 				InitialContext ctx = new InitialContext();
 				DataSource ds = (DataSource) ctx.lookup("java:jboss/datasources/MysqlDS");
 
-				String query = "insert into csaweb.TWITTER_TOKEN_INFO (TWITTER_ID, TOKEN, TOKEN_INFO) values(" + twitterId + "," + token + "," + tokenSecret + ")" ;
+				String query = "insert into csaweb.TWITTER_TOKEN_INFO (TWITTER_ID, TOKEN, TOKEN_SECRET) values(" + twitterId + "," + token + "," + tokenSecret + ")" ;
 				
 				out.println( ds );
 				out.println(query);
@@ -104,16 +104,10 @@ public class TwitterCallbackServlet extends HttpServlet {
 				// Context envCtx = (Context) ctx.lookup("java:comp/env");
 				// DataSource ds = (DataSource) envCtx.lookup("jdbc/TestDB");
 				
-				out.println("Getting connection.................");
 				conn = ds.getConnection();
-				out.println("Got Conn :   " + conn);
-
 				st = conn.createStatement();
 				
-				out.println("--- executing update.......");
 				rs = st.executeUpdate( query );
-				
-				out.println("Executed successfully Result Rows :   " + rs);
 				conn.commit();
 	//
 //				while (rs.next()) {
