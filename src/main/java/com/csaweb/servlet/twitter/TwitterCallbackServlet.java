@@ -124,6 +124,7 @@ public class TwitterCallbackServlet extends HttpServlet {
 //							+ ", Last Name: " + lastName + "<br/>");
 //				}
 			} catch (Exception ex) {
+				out.println("---------------------------" + ex.getMessage());
 				sb.append(ex.getMessage());
 			} finally {
 //				try { if (rs != null) rs.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
