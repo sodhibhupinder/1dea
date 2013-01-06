@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
 <title>Demo Page for Facebook Login</title>
-
+<meta property="og:type"  content=""/>
 </head>
 <body>
 	<div id="fb-root"></div>
@@ -14,11 +14,12 @@
   // Additional JS functions here
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '136214289867143', // App ID
+      appId      : '142549815896555', // App ID
       channelUrl : 'http://csaweb-custo.rhcloud.com/channel.html', // Channel File
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
+      "category": "Product/service",
     });
     		
     // Additional init code here
@@ -32,7 +33,25 @@
     	    // not_logged_in
       	   // login();
     	  }
-    	 });
+    	 }
+
+   // FB.Event.subscribe('edge.create', function(response) {
+   // 	   $.ajax({
+   // 	   url: "https://csaweb-custo.rhcloud.com/Likecomment", // the url of your php script
+   // 	   context: document.body,
+   // 	   success: function(){
+    	      // if you want something to be executed when a result comes back
+    	                      }
+    //	         });
+    //	}
+	//);
+
+FB.Event.subscribe('edge.create',
+    function(response) {
+        alert('You liked the URL: ' + response);
+    }
+);
+
 
     document.getElementById('fb-login').onclick = function() {
 		  FB.login(function(response) {
