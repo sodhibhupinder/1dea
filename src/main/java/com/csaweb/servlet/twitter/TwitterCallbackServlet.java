@@ -106,7 +106,7 @@ public class TwitterCallbackServlet extends HttpServlet {
 				
 				out.println("Getting connection.................");
 				conn = ds.getConnection();
-				out.println("Got Conn : " + conn);
+				out.println("Got Conn :   " + conn);
 
 				st = conn.createStatement();
 				
