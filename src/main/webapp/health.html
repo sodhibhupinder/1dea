@@ -32,13 +32,7 @@
       	   // login();
     	  }
     	 }
-
-// FB.Event.subscribe('edge.create',
-//     function(response) {
-//         alert('You liked the URL: ' + response);
-//     }
-// );
-
+	 );
 
     document.getElementById('fb-login').onclick = function() {
 		  FB.login(function(response) {
@@ -52,7 +46,7 @@
 		    }
 		  });
 		};
-  };
+  
 
   function login() {
 	    FB.login(function(response) {
@@ -101,7 +95,7 @@
       });
 
       alert('finished');
-  }
+  };
 
 </script>
 <fb:login-button>Login</fb:login-button>
