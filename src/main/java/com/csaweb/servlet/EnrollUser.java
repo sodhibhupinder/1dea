@@ -85,7 +85,7 @@ Date d = new Date();
 		   {
 			   
 			   String query = "insert into csaweb.user_info (user_id,object_id,object_type,post_id) values('"+user.getId()+"','"+liker.getId()+"','"+liker.getCategory()+"','"+liker.getName()+"')" ;
-			   writeToMySql(query);
+			   logger.info(writeToMySql(query));
 		   }
 		   // 	logger.info(liker.getCategory());
 		
