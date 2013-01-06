@@ -23,7 +23,9 @@ import javax.sql.DataSource;
 
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
+import com.restfb.types.NamedFacebookType;
 import com.restfb.types.User;
+import com.restfb.types.Post.Likes;
 
 /**
  * Servlet implementation class MyServlet
@@ -73,6 +75,12 @@ Date d = new Date();
 		String token=request.getParameter("at");
 		User user = facebookClient.fetchObject("me", User.class);
 		
+		com.restfb.Connection<Likes> likes = facebookClient.fetchConnection("me/likes",Likes.class);
+		
+		logger.info(likes.getData().toString());
+		    // Prints all 4 people 
+		    for (Likes liker : likes.getData()) 
+		    	logger.info(liker.getData().toString());
 		
 		String query = "insert into csaweb.user_info (user_id,user_first_name,user_last_name,user_fb_token) values('"+user.getId()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+token+"')" ;
 		response.setContentType("text/plain");
