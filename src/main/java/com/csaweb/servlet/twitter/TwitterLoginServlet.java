@@ -29,12 +29,15 @@ public class TwitterLoginServlet extends HttpServlet {
 		 
 		PrintWriter out = response.getWriter();
 
+	    Twitter twitter = new TwitterFactory().getInstance();
+	    twitter.setOAuthConsumer("BR8JwXg62cxsFZq1MIYA", "Ox5CSVL8lNJ5EcSC5IDzrY3SQDgyK4Gt5Id3y4mzRXA");
+	       
 		// Check the user already Authorized...
 		AccessToken accessToken = isUserAuthorized(userId);
 		
 		if ( accessToken != null ) {
 			try{
-				Twitter twitter = new TwitterFactory().getInstance();
+
 				twitter.setOAuthAccessToken(accessToken);
 				
 				out.println("Screen Name : " + twitter.getScreenName());
@@ -45,9 +48,7 @@ public class TwitterLoginServlet extends HttpServlet {
 		} else {
 			// First Time user redirect to Twitter Login Page
 		
-		       Twitter twitter = new TwitterFactory().getInstance();
-		       twitter.setOAuthConsumer("BR8JwXg62cxsFZq1MIYA", "Ox5CSVL8lNJ5EcSC5IDzrY3SQDgyK4Gt5Id3y4mzRXA");
-		       
+	       
 		        request.getSession().setAttribute("twitter", twitter);
 		        try {
 		            StringBuffer callbackURL = request.getRequestURL();
