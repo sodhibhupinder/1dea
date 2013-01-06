@@ -79,15 +79,16 @@ Date d = new Date();
 		com.restfb.Connection<CategorizedFacebookType> likes = facebookClient.fetchConnection("me/likes",CategorizedFacebookType.class);
 		
 		
+		
 		    // Prints all 4 people 
-		    for (CategorizedFacebookType liker : likes.getData()) 
-		    	logger.info(liker.getCategory());
+		   // for (CategorizedFacebookType liker : likes.getData()) 
+		   // 	logger.info(liker.getCategory());
 		
 		String query = "insert into csaweb.user_info (user_id,user_first_name,user_last_name,user_fb_token) values('"+user.getId()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+token+"')" ;
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
 		
-		out.println(user.getAbout());
+		out.println("Likes Count:-"+likes.getData().size());
 		//out.println("Testing Ajax Call from Javascript");
 		//out.println("Query is"+ query);
 		//out.println(writeToMySql(query));
