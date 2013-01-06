@@ -7,6 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+import java.util.logging.LoggingMXBean;
 
 import javax.naming.InitialContext;
 import javax.servlet.ServletConfig;
@@ -27,7 +31,8 @@ import com.restfb.types.User;
 @WebServlet(name = "EnrollUser", urlPatterns = { "/EnrollUser" })
 public class EnrollUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	final LoggingMXBean mxBean = LogManager.getLoggingMXBean();
+	final Logger logger = Logger.getLogger(EnrollUser.class.getName());
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -54,28 +59,29 @@ public class EnrollUser extends HttpServlet {
 		// TODO Auto-generated method stub
 Date d = new Date();
 		
-		response.getWriter().println("Date is " + d.toString());
+//		response.getWriter().println("Date is " + d.toString());
+//		
+//		response.getWriter().println("Testing datasource " + testJndiDataSource());
+//		
+//		response.getWriter().println("Access Token is "+request.getParameter("at"));
+//		response.getWriter().println("User Id is "+request.getParameter("id"));
+//		response.getWriter().println("User Name is "+request.getParameter("name"));
+//		
 		
-		response.getWriter().println("Testing datasource " + testJndiDataSource());
-		
-		response.getWriter().println("Access Token is "+request.getParameter("at"));
-		response.getWriter().println("User Id is "+request.getParameter("id"));
-		response.getWriter().println("User Name is "+request.getParameter("name"));
-		
-		
-		
+		mxBean.setLoggerLevel("com.restfb.HTTP",Level.FINE.getName());
 		FacebookClient facebookClient = new DefaultFacebookClient(request.getParameter("at"));
 		String token=request.getParameter("at");
 		User user = facebookClient.fetchObject("me", User.class);
 		
+		user.getAbout();
 		String query = "insert into csaweb.user_info (user_id,user_first_name,user_last_name,user_fb_token) values('"+user.getId()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+token+"')" ;
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
-		out.println("Testing Ajax Call from Javascript");
-		out.println("Query is"+ query);
-		out.println(writeToMySql(query));
-		out.flush();
-		out.close();
+		//out.println("Testing Ajax Call from Javascript");
+		//out.println("Query is"+ query);
+		//out.println(writeToMySql(query));
+		//out.flush();
+		//out.close();
 	}
 
 	@Override
