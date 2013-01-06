@@ -38,6 +38,7 @@ public class TwitterLoginServlet extends HttpServlet {
 				twitter.setOAuthAccessToken(accessToken);
 				
 				out.println("Screen Name : " + twitter.getScreenName());
+				out.println("Screen Name : " + twitter.getScreenName());
 	        } catch (TwitterException e) {
 	            throw new ServletException(e);
 	        }	
