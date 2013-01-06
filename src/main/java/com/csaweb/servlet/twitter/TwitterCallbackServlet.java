@@ -108,7 +108,6 @@ public class TwitterCallbackServlet extends HttpServlet {
 				st = conn.createStatement();
 				
 				rs = st.executeUpdate( query );
-				conn.commit();
 	//
 //				while (rs.next()) {
 //					String id = rs.getString("id");
