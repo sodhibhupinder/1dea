@@ -96,7 +96,7 @@ public class TwitterCallbackServlet extends HttpServlet {
 				InitialContext ctx = new InitialContext();
 				DataSource ds = (DataSource) ctx.lookup("java:jboss/datasources/MysqlDS");
 
-				String query = "insert into csaweb.TWITTER_TOKEN_INFO (TWITTER_ID, TOKEN, TOKEN_SECRET) values(" + twitterId + "," + token + "," + tokenSecret + ")" ;
+				String query = "insert into csaweb.TWITTER_TOKEN_INFO (TWITTER_ID, TOKEN, TOKEN_SECRET) values('" + twitterId + "','" + token + "','" + tokenSecret + "')" ;
 				
 				out.println( ds );
 				out.println(query);
