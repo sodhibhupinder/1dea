@@ -38,7 +38,7 @@ public class TwitterCallbackServlet extends HttpServlet {
 	        try {
 	        	accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
 	            // Save the AccessToken
-	        	saveAccessToken(twitter.getScreenName(), accessToken.getToken(), accessToken.getTokenSecret());
+	        	saveAccessToken(twitter.getScreenName(), accessToken.getToken(), accessToken.getTokenSecret(), out);
 	        	request.getSession().removeAttribute("requestToken");
 	        } catch (TwitterException e) {
 	            throw new ServletException(e);
@@ -86,7 +86,7 @@ public class TwitterCallbackServlet extends HttpServlet {
 	        
 	}
 
-	private void saveAccessToken(String twitterId, String token, String tokenSecret) {
+	private void saveAccessToken(String twitterId, String token, String tokenSecret, PrintWriter out) {
 
 		Connection conn = null;
 			Statement st = null;
@@ -98,6 +98,8 @@ public class TwitterCallbackServlet extends HttpServlet {
 
 				String query = "insert into csaweb.TWITTER_TOKEN_INFO (TWITTER_ID, TOKEN, TOKEN_INFO) values(" + twitterId + "," + token + "," + tokenSecret + ")" ;
 				
+				out.println( ds );
+				out.println(query);
 				// This works too
 				// Context envCtx = (Context) ctx.lookup("java:comp/env");
 				// DataSource ds = (DataSource) envCtx.lookup("jdbc/TestDB");
