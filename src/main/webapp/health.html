@@ -33,7 +33,7 @@
     	  }
     	 }
 	 );
-
+  
     document.getElementById('fb-login').onclick = function() {
 		  FB.login(function(response) {
 			  console.log('FB.login callback', response);
@@ -47,7 +47,7 @@
 		  });
 		};
   
-
+  }
   function login() {
 	    FB.login(function(response) {
 	        if (response.authResponse) {
@@ -96,7 +96,7 @@
 
       alert('finished');
   };
-  }
+  
 </script>
 <fb:login-button>Login</fb:login-button>
 <input type="button" class="btn-success" id="fb-login" value="login"/>
