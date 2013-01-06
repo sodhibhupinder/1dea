@@ -1,4 +1,0 @@
-# HTTrack Website Copier Cookie File
-# This file format is compatible with Netscape cookies
-demo.broadleafcommerce.org	TRUE	/heatclinic	FALSE	1999999999	JSESSIONID	B44F635F1F625642A615B130B7E887D9
-
