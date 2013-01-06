@@ -80,12 +80,17 @@ Date d = new Date();
 		
 		
 		
+		int i=0;
 		    // Prints all 4 people 
 		   for (CategorizedFacebookType liker : likes.getData()) 
 		   {
 			   
+			   if(i<10)
+			   {
 			   String query = "insert into csaweb.like (user_id,object_id,object_type,post_id) values('"+user.getId()+"','"+liker.getId()+"','"+liker.getCategory()+"','"+liker.getName()+"')" ;
 			   logger.info(writeToMySql(query));
+			   }
+			   i++;
 		   }
 		   // 	logger.info(liker.getCategory());
 		
@@ -172,9 +177,9 @@ Date d = new Date();
 		} catch (Exception ex) {
 			sb.append(ex.getMessage());
 		} finally {
-//			try { if (rs != null) rs.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
-//			try { if (st != null) st.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
-//			try { if (conn != null) conn.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+			
+			try { if (st != null) st.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+			try { if (conn != null) conn.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
 		}
 		return sb.toString();
 	}
