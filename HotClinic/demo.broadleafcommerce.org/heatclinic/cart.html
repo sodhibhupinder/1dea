@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]--><!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]--><!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]--><!--[if gt IE 8]><!-->
+
+
+
+ <html class="no-js" lang="en"><!--<![endif]--> 
+
+
+<!-- Mirrored from demo.broadleafcommerce.org/heatclinic/cart by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 17 Dec 2012 09:40:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	
+	
+	
+		<title>Cart - Broadleaf Demo - Heat Clinic</title>
+	
+	
+	<meta name="description" content="Broadleaf Demo Store" />
+	<meta name="author" content="Broadleaf Commerce" />
+
+	<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />	
+	<meta name="viewport" content="width=device-width" />
+	
+    <link rel="stylesheet" href="css/jquery.rating-2.css" />
+	<link rel="stylesheet" href="css/style-2.css" />
+	
+
+	<script src="js/libs/modernizr-2.5.3.min.js"></script>
+</head>
+
+<body>
+	<div id="notification_bar"></div>
+	<header>
+	<div id="header_content">
+		<div id="cart_info">
+		    
+				<a class="account" href="loginhtml.html">Login</a> 
+				&nbsp;|&nbsp; 
+				<a class="account" href="registerhtml.html">Register</a> 
+				&nbsp;|&nbsp; 
+			
+		    
+			<a id="cartLink" class="fancycart" href="cart.html">
+				<img alt="Shopping Cart Icon" src="img/shopping_cart-2.png" />
+				&nbsp; 
+				<span class="headerCartItemsCount">0</span>
+				<span class="headerCartItemsCountWord"> items</span>
+			</a>
+		</div>
+		
+		<div id="logo"><h1><a href="index.html">The Heat Clinic Home</a></h1></div>
+		
+		<div id="search">
+			<form method="GET" action="http://demo.broadleafcommerce.org/heatclinic/search">
+			<input type="search" class="search" name="q" value="" />
+			<input type="submit" id="search_button" value="go" />
+			</form>
+		</div>
+	</div>
+</header>
+
+	
+	<div id="content" class="width_setter group" role="main">
+	
+		<nav>	
+	
+	
+	
+	<ul>
+		<li>
+			<a class="home" href="index.html">Home</a>
+		</li><li>
+			<a href="hot-sauces.html">Hot Sauces</a>
+		</li><li>
+			<a href="merchandise.html">Merchandise</a>
+		</li><li>
+			<a href="clearance.html">Clearance</a>
+		</li><li>
+			<a href="new-to-hot-sauce.html">New to Hot Sauce?</a>
+		</li><li>
+			<a href="faq.html">FAQs</a>
+		</li>
+	</ul>
+</nav>
+		
+		<div id="cart" class="cart_modal">
+	<div style="display: none;">Cart - Broadleaf Demo - Heat Clinic</div>
+	
+	<table id="cart_products">
+	<thead>
+		<tr>
+			<th colspan="2">Item</th>
+			<th>Quantity</th>
+			<th>Price <span class="small">(each)</span></th>
+			<th>Discount <span class="small">(each)</span></th>
+			<th>Total</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+	</tbody>
+</table>
+	<div id="cart_total" class="group">
+		<h3>Your Current Subtotal</h3>
+		
+		
+		<p>Subtotal does not yet include applicable tax or shipping and handling charges.</p>
+		<div id="checkout"><a target="_top" class="big-button red-button" href="checkouthtml.html">Checkout</a></div>
+		<p><a target="_top" href="index.html">&laquo; Continue Shopping</a></p>
+	</div>
+	<form id="cart_promo" method="POST" action="http://demo.broadleafcommerce.org/heatclinic/cart/promo">
+		<label for="promoCode">Promo Code:</label>
+		<input id="promoCode" name="promoCode" type="text" value="" maxlength="10" autocomplete="off" />
+		<input type="submit" id="addPromo" name="addPromo" value="Apply Discount" class="small red" />
+		
+		<div id="cart_promo_error" style="display: none;"></div>
+	<input type="hidden" name="csrfToken" value="1G4T-9UMA-1U3H-L29B-69UP-Z9UE-U1BN-NG4G" /></form>
+	
+	
+
+</div>
+			
+	</div>
+	
+	<footer class="group">
+	<div id="left_content">
+		<h4>Delivering Texas Sized Heat</h4>
+		&copy; Copyright 2012 The Heat Clinic<br />
+		<a href="#">Privacy Policy</a>
+	</div>
+	<div id="right_content">
+		<h4>Since Nineteen Seventy Eight</h4>
+		All Rights Reserved.<br />
+		<a href="#">Customer Service</a>
+	</div>
+    <div id="blc_brand">
+        <a href="http://www.broadleafcommerce.com/">
+            <img alt="Broadleaf Commerce" src="img/broadleaf-seal-2.png" />
+            <h4>Powered by Broadleaf Commerce</h4>
+            <br />
+        </a>
+        <p>&copy; Copyright 2012 Broadleaf Commerce<br /></p>
+    </div>
+
+	
+	
+	<script src="../../ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>
+		//<![CDATA[
+		window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')
+		//]]>
+	</script>
+	
+    <script>
+        var _gaq=[['_setAccount','UA-8476611-7'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+	
+	<script src="js/plugins.js"></script>
+	<script src="js/libs/jquery.MetaData.js"></script>
+	<script src="js/libs/jquery.rating.pack.js"></script>
+	<script src="js/libs/jquery.dotdotdot-1.5.1.js"></script>
+	
+	
+	<script src="js/BLC.js"></script>
+	<script src="js/heatClinic.js"></script>
+	<script src="js/cartOperations.js"></script>
+    <script src="js/checkoutOperations.js"></script>
+	<script src="js/globalOnReady.js"></script>
+    <script src="js/manageAccountOperations.js"></script>
+    <script src="js/reviewOperations.js"></script>
+	
+</footer>
+
+	
+</body>
+
+<!-- Mirrored from demo.broadleafcommerce.org/heatclinic/cart by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 17 Dec 2012 09:40:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+</html>

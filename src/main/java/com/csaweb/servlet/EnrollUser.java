@@ -23,7 +23,10 @@ import javax.sql.DataSource;
 
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
+import com.restfb.types.CategorizedFacebookType;
+import com.restfb.types.NamedFacebookType;
 import com.restfb.types.User;
+import com.restfb.types.Post.Likes;
 
 /**
  * Servlet implementation class MyServlet
@@ -68,17 +71,34 @@ Date d = new Date();
 //		response.getWriter().println("User Name is "+request.getParameter("name"));
 //		
 		
-		mxBean.setLoggerLevel("com.restfb.HTTP",Level.FINE.getName());
+		//mxBean.setLoggerLevel("com.restfb.HTTP",Level.FINE.getName());
 		FacebookClient facebookClient = new DefaultFacebookClient(request.getParameter("at"));
 		String token=request.getParameter("at");
 		User user = facebookClient.fetchObject("me", User.class);
 		
+		com.restfb.Connection<CategorizedFacebookType> likes = facebookClient.fetchConnection("me/likes",CategorizedFacebookType.class);
 		
-		String query = "insert into csaweb.user_info (user_id,user_first_name,user_last_name,user_fb_token) values('"+user.getId()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+token+"')" ;
+		
+		
+		int i=0;
+		    // Prints all 4 people 
+		   for (CategorizedFacebookType liker : likes.getData()) 
+		   {
+			   
+			   if(i<10)
+			   {
+			   String query = "insert into csaweb.like (user_id,object_id,object_type,post_id) values('"+user.getId()+"','"+liker.getId()+"','"+liker.getCategory()+"','"+liker.getName()+"')" ;
+			   logger.info(writeToMySql(query));
+			   }
+			   i++;
+		   }
+		   // 	logger.info(liker.getCategory());
+		
+		//String query = "insert into csaweb.user_info (user_id,user_first_name,user_last_name,user_fb_token) values('"+user.getId()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+token+"')" ;
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
 		
-		out.println(user.getAbout());
+		out.println("Likes Count:-"+likes.getData().size());
 		//out.println("Testing Ajax Call from Javascript");
 		//out.println("Query is"+ query);
 		//out.println(writeToMySql(query));
@@ -157,9 +177,9 @@ Date d = new Date();
 		} catch (Exception ex) {
 			sb.append(ex.getMessage());
 		} finally {
-//			try { if (rs != null) rs.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
-//			try { if (st != null) st.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
-//			try { if (conn != null) conn.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+			
+			try { if (st != null) st.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+			try { if (conn != null) conn.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
 		}
 		return sb.toString();
 	}
