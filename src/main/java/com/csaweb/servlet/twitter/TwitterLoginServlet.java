@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 
 import twitter4j.DirectMessage;
 import twitter4j.ResponseList;
+import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -49,6 +50,14 @@ public class TwitterLoginServlet extends HttpServlet {
 //						out.println(msg.getText());
 //					}
 //				}
+				
+			    ResponseList<Status> frnsTmeline = twitter.getFriendsTimeline();
+			    if ( frnsTmeline!=null && !frnsTmeline.isEmpty() ) {
+			    	for( Status sts : frnsTmeline ) {
+			    		out.println("Friends Timeline " + sts.getText() );
+			    	}
+			    }
+			    
 	        } catch (TwitterException e) {
 	            throw new ServletException(e);
 	        }	
