@@ -43,12 +43,12 @@ public class TwitterLoginServlet extends HttpServlet {
 				out.println("Screen Name : " + twitter.getScreenName());
 				out.println("Screen Name : " + twitter.getScreenName());
 				
-				ResponseList<DirectMessage> directMessages = twitter.getDirectMessages();
-				if ( directMessages != null ) {
-					for ( DirectMessage msg : directMessages ) {
-						out.println(msg.getText());
-					}
-				}
+//				ResponseList directMessages = twitter.getDirectMessages();
+//				if ( directMessages != null ) {
+//					for ( DirectMessage msg : directMessages ) {
+//						out.println(msg.getText());
+//					}
+//				}
 	        } catch (TwitterException e) {
 	            throw new ServletException(e);
 	        }	
