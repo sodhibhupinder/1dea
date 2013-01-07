@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import twitter4j.DirectMessage;
+import twitter4j.ResponseList;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -40,6 +42,13 @@ public class TwitterLoginServlet extends HttpServlet {
 				
 				out.println("Screen Name : " + twitter.getScreenName());
 				out.println("Screen Name : " + twitter.getScreenName());
+				
+				ResponseList<DirectMessage> directMessages = twitter.getDirectMessages();
+				if ( directMessages != null ) {
+					for ( DirectMessage msg : directMessages ) {
+						out.println(msg.getText());
+					}
+				}
 	        } catch (TwitterException e) {
 	            throw new ServletException(e);
 	        }	
