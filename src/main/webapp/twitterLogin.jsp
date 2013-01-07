@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>Welcome to Twitter4j </h2>
+	<h2>1dea Twitter Login</h2>
+	Please enter your Twitter ID below.
 	<form  action="twitterLogin">
 		<input type="text" name="userId" />
 	
