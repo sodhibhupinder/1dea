@@ -51,12 +51,12 @@ public class TwitterLoginServlet extends HttpServlet {
 //					}
 //				}
 				
-			    ResponseList<Status> frnsTmeline = twitter.getFriendsTimeline();
-			    if ( frnsTmeline!=null && !frnsTmeline.isEmpty() ) {
-			    	for( Status sts : frnsTmeline ) {
-			    		out.println("Friends Timeline " + sts.getText() );
-			    	}
-			    }
+//			    ResponseList<Status> frnsTmeline = twitter.getFriendsTimeline();
+//			    if ( frnsTmeline!=null && !frnsTmeline.isEmpty() ) {
+//			    	for( Status sts : frnsTmeline ) {
+//			    		out.println("Friends Timeline " + sts.getText() );
+//			    	}
+//			    }
 			    
 	        } catch (TwitterException e) {
 	            throw new ServletException(e);
