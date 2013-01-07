@@ -24,11 +24,28 @@
 			<artifactId>gson</artifactId>
 			<version>2.2.2</version>
 		</dependency>
-	    <dependency>
-           <groupId>org.twitter4j</groupId>
-           <artifactId>twitter4j-core</artifactId>
-           <version>2.1.1</version>
-        </dependency>
+
+        <dependency>
+			<groupId>org.twitter4j</groupId>
+			<artifactId>twitter4j-core</artifactId>
+			<version>2.2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.twitter4j</groupId>
+			<artifactId>twitter4j-async</artifactId>
+			<version>2.2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.twitter4j</groupId>
+			<artifactId>twitter4j-stream</artifactId>
+			<version>2.2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.twitter4j</groupId>
+			<artifactId>twitter4j-media-support</artifactId>
+			<version>2.2.5</version>
+		</dependency>
+        
         <dependency>
   <groupId>com.restfb</groupId>
   <artifactId>restfb</artifactId>
