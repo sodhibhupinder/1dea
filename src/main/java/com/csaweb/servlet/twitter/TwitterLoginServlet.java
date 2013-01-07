@@ -55,7 +55,7 @@ public class TwitterLoginServlet extends HttpServlet {
 			    if ( frnsTmeline!=null && !frnsTmeline.isEmpty() ) {
 			    	for( Object sts : frnsTmeline ) {
 			    		Status st = (Status)sts;
-			    		System.out.println("Friends Timeline " + st.getText() );
+			    		out.println("Friends Timeline " + st.getText() );
 			    	}
 			    }
 			    
