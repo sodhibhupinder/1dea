@@ -11,8 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import twitter4j.DirectMessage;
+import twitter4j.IDs;
+import twitter4j.ResponseList;
+import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
@@ -26,7 +31,7 @@ public class TwitterCallbackServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 	
 
-		AccessToken accessToken = null;
+		twitter4j.auth.AccessToken accessToken = null;
 		 Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
 	        RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
 	        String verifier = request.getParameter("oauth_verifier");

@@ -25,7 +25,7 @@
 			<version>2.2.2</version>
 		</dependency>
 
-        <dependency>
+		<dependency>
 			<groupId>org.twitter4j</groupId>
 			<artifactId>twitter4j-core</artifactId>
 			<version>2.2.5</version>
@@ -45,12 +45,18 @@
 			<artifactId>twitter4j-media-support</artifactId>
 			<version>2.2.5</version>
 		</dependency>
-        
-        <dependency>
-  <groupId>com.restfb</groupId>
-  <artifactId>restfb</artifactId>
-  <version>1.6.11</version>
-</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.22</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.restfb</groupId>
+			<artifactId>restfb</artifactId>
+			<version>1.6.11</version>
+		</dependency>
 	</dependencies>
 	<profiles>
 		<profile>
