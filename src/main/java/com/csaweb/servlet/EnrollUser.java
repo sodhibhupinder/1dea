@@ -151,7 +151,7 @@ public class EnrollUser extends HttpServlet {
 			String email = request.getParameter("newemail");
 			String fname = request.getParameter("fname");
 			String lname = request.getParameter("lname");
-			String fullname = fname +" "+ lname;
+			String fullname = fname +"-"+ lname;
 			String password = request.getParameter("password1");
 			
 			

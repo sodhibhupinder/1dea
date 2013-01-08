@@ -257,7 +257,7 @@ public class EDatabase {
 			}
 			
 			pst = con.prepareStatement(sql);
-			
+			System.out.println(sql+" -Update Query");
 			
 			int i = 1;
 			for (Object p : params) {
