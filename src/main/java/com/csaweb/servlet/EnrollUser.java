@@ -291,7 +291,7 @@ public class EnrollUser extends HttpServlet {
 		try {
 			Connection con = EDatabase.borrowConnection();
 			int rowCount = EDatabase.update(
-					"INSERT INTO  USERS (USER_NAME,PASSWORD,EMAIL) VALUES ('"+name+"','"+strPassword+"','"+email+"')" );
+					"INSERT INTO  USERS (USER_NAME,PASSWORD,EMAIL) VALUES ( ?,?,? )" ,name, strPassword,email);
 			if (rowCount==1)
 				result = true;
 		} catch (SQLException e) {

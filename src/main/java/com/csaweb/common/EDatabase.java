@@ -270,6 +270,7 @@ public class EDatabase {
 				} else {
 		 			throw new IllegalStateException("only strings and ints are supportrded yet " + i + ":" + p);
 				}
+				i++;
 			}
 			
 			
