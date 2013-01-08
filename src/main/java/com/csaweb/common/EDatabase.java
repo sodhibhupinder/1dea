@@ -93,50 +93,50 @@ public class EDatabase {
 
 		removePool();
 		
-		Connection conn = null;
-		Statement st = null;
-		ResultSet rs = null;
-		StringBuffer sb = new StringBuffer();
-		MysqlConnectionPoolDataSource ds = null;
-		try {
-			InitialContext ctx = new InitialContext();
-			 ds = (MysqlConnectionPoolDataSource) ctx.lookup("java:jboss/datasources/MysqlDS");
+//		Connection conn = null;
+//		Statement st = null;
+//		ResultSet rs = null;
+//		StringBuffer sb = new StringBuffer();
+//		MysqlConnectionPoolDataSource ds = null;
+//		try {
+//			InitialContext ctx = new InitialContext();
+//			 ds = (MysqlConnectionPoolDataSource) ctx.lookup("java:jboss/datasources/MysqlDS");
+//
+//			// This works too
+//			// Context envCtx = (Context) ctx.lookup("java:comp/env");
+//			// DataSource ds = (DataSource) envCtx.lookup("jdbc/TestDB");
+//			
+//			conn = ds.getConnection();
+//
+//		//	st = conn.createStatement();
+//		//	rs = st.executeQuery("SELECT * FROM csaweb.user_info");
+//
+//			while (rs.next()) {
+//				String id = rs.getString("id");
+//				String firstName = rs.getString("user_first_name");
+//				String lastName = rs.getString("user_last_name");
+//				sb.append("ID: " + id + ", First Name: " + firstName
+//						+ ", Last Name: " + lastName + "<br/>");
+//			}
+//		} catch (Exception ex) {
+//			sb.append(ex.getMessage());
+//		} finally {
+//			try { if (rs != null) rs.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+//			try { if (st != null) st.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+//			try { if (conn != null) conn.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
+//		}
+		MysqlConnectionPoolDataSource dataSource = new MysqlConnectionPoolDataSource();
 
-			// This works too
-			// Context envCtx = (Context) ctx.lookup("java:comp/env");
-			// DataSource ds = (DataSource) envCtx.lookup("jdbc/TestDB");
-			
-			conn = ds.getConnection();
-
-		//	st = conn.createStatement();
-		//	rs = st.executeQuery("SELECT * FROM csaweb.user_info");
-
-			while (rs.next()) {
-				String id = rs.getString("id");
-				String firstName = rs.getString("user_first_name");
-				String lastName = rs.getString("user_last_name");
-				sb.append("ID: " + id + ", First Name: " + firstName
-						+ ", Last Name: " + lastName + "<br/>");
-			}
-		} catch (Exception ex) {
-			sb.append(ex.getMessage());
-		} finally {
-			try { if (rs != null) rs.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
-			try { if (st != null) st.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
-			try { if (conn != null) conn.close(); } catch (SQLException e) { sb.append(e.getMessage());; }
-		}
-		//MysqlConnectionPoolDataSource dataSource = new MysqlConnectionPoolDataSource();
-
-//		dataSource.setDatabaseName(Elegance.db);
-//		dataSource.setServerName(Elegance.host);
-//		dataSource.setUser(Elegance.dbusername);
-//		dataSource.setPassword(Elegance.dbpassword);
+		dataSource.setDatabaseName("csaweb");
+		dataSource.setServerName("127.6.124.129");
+		dataSource.setUser("admin");
+		dataSource.setPassword("nkpTVr6m7685");
+//		
+	//	ds.setDumpQueriesOnException(true);
 		
-	//	dataSource.setDumpQueriesOnException(true);
+		//ds.setConnectionLifecycleInterceptors(ConnectionInterceptor.class.getName());
 		
-		//dataSource.setConnectionLifecycleInterceptors(ConnectionInterceptor.class.getName());
-		
-		poolMgr = new EleganceConnectionPoolManager(ds);
+		poolMgr = new EleganceConnectionPoolManager(dataSource);
 	}
 	
 	public static void removePool() {
