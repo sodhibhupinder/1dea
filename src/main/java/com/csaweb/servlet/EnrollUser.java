@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
@@ -107,6 +108,25 @@ Date d = new Date();
 			e.printStackTrace();
 		}
 		response.getWriter().println(EDatabase.getConnectionStats());
+		
+		try {
+			List<Object[]> ls = EDatabase.get("SELECT * FROM csaweb.user_info");
+			StringBuffer sb = new StringBuffer();
+			for(Object[] obj: ls)
+			{
+				String id = (String) obj[0];
+				String firstName =  (String) obj[1];
+				String lastName =  (String) obj[2];
+				sb.append("ID: " + id + ", First Name: " + firstName
+						+ ", Last Name: " + lastName + "<br/>");
+			}
+			response.getWriter().println(sb);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		//out.println("Testing Ajax Call from Javascript");
 		//out.println("Query is"+ query);
 		//out.println(writeToMySql(query));
