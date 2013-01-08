@@ -110,7 +110,7 @@ public class EnrollUser extends HttpServlet {
 		// //String query =
 		// "insert into csaweb.user_info (user_id,user_first_name,user_last_name,user_fb_token) values('"+user.getId()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+token+"')"
 		// ;
-		response.setContentType("text/plain");
+		response.setContentType("application/json");
 		// PrintWriter out = response.getWriter();
 		//
 		// out.println("Likes Count:-"+likes.getData().size());

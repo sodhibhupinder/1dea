@@ -54,7 +54,7 @@ $(document).ready(function(){
           // other available options: '
           url:       'https://csaweb-custo.rhcloud.com/EnrollUser',        
          // type:      post        // 'get' or 'post', override for form's 'method' attribute 
-          //dataType:  null        // 'xml', 'script', or 'json' (expected server response type) 
+          dataType:  'json'        // 'xml', 'script', or 'json' (expected server response type) 
           //clearForm: true        // clear all form fields after successful submit 
           //resetForm: true        // reset the form after successful submit 
    
@@ -70,7 +70,7 @@ $(document).ready(function(){
               // other available options: 
               url:       'https://csaweb-custo.rhcloud.com/EnrollUser?register=true',     
              // type:      post,        // 'get' or 'post', override for form's 'method' attribute 
-             // dataType:  json        // 'xml', 'script', or 'json' (expected server response type) 
+             dataType:  'json'        // 'xml', 'script', or 'json' (expected server response type) 
               //clearForm: true        // clear all form fields after successful submit 
               //resetForm: true        // reset the form after successful submit 
        
