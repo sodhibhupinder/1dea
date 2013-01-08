@@ -240,7 +240,7 @@ public class EnrollUser extends HttpServlet {
 		try {
 			Connection con = EDatabase.borrowConnection();
 			List<Object> result = EDatabase.getFirstColumn(
-					"SELECT email FROM users where email=?,password=?",
+					"SELECT EMAIL FROM USERS where EMAIL =? AND PASSWORD = ? ",
 					strUserName, strPassword);
 
 			if (result.equals(strUserName))

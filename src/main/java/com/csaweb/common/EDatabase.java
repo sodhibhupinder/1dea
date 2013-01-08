@@ -181,7 +181,7 @@ public class EDatabase {
 			}
 			
 			pst = con.prepareStatement(sql);
-			
+			System.out.println(sql +"Executing query in getfirst");
 			
 			int i = 1;
 			for (Object p : params) {
@@ -196,6 +196,9 @@ public class EDatabase {
 				}
 				i++;
 			}
+			
+			
+			
 			rs = pst.executeQuery();
 			boolean first = true;
 			int columnCount = 0;
