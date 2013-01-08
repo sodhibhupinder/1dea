@@ -243,7 +243,7 @@ public class EnrollUser extends HttpServlet {
 					"SELECT email FROM users where email=?,password=?",
 					strUserName, strPassword);
 
-			if (result.equals("1"))
+			if (result.equals(strUserName))
 				isValid = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
