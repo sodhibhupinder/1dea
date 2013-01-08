@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import com.csaweb.common.EDatabase;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.types.CategorizedFacebookType;
@@ -72,33 +73,35 @@ Date d = new Date();
 //		
 		
 		//mxBean.setLoggerLevel("com.restfb.HTTP",Level.FINE.getName());
-		FacebookClient facebookClient = new DefaultFacebookClient(request.getParameter("at"));
-		String token=request.getParameter("at");
-		User user = facebookClient.fetchObject("me", User.class);
-		
-		com.restfb.Connection<CategorizedFacebookType> likes = facebookClient.fetchConnection("me/likes",CategorizedFacebookType.class);
-		
-		
-		
-		int i=0;
-		    // Prints all 4 people 
-		   for (CategorizedFacebookType liker : likes.getData()) 
-		   {
-			   
-			   if(i<10)
-			   {
-			   String query = "insert into csaweb.like (user_id,object_id,object_type,post_id) values('"+user.getId()+"','"+liker.getId()+"','"+liker.getCategory()+"','"+liker.getName()+"')" ;
-			   logger.info(writeToMySql(query));
-			   }
-			   i++;
-		   }
-		   // 	logger.info(liker.getCategory());
-		
-		//String query = "insert into csaweb.user_info (user_id,user_first_name,user_last_name,user_fb_token) values('"+user.getId()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+token+"')" ;
-		response.setContentType("text/plain");
-		PrintWriter out = response.getWriter();
-		
-		out.println("Likes Count:-"+likes.getData().size());
+//		FacebookClient facebookClient = new DefaultFacebookClient(request.getParameter("at"));
+//		String token=request.getParameter("at");
+//		User user = facebookClient.fetchObject("me", User.class);
+//		
+//		com.restfb.Connection<CategorizedFacebookType> likes = facebookClient.fetchConnection("me/likes",CategorizedFacebookType.class);
+//		
+//		
+//		
+//		int i=0;
+//		    // Prints all 4 people 
+//		   for (CategorizedFacebookType liker : likes.getData()) 
+//		   {
+//			   
+//			   if(i<10)
+//			   {
+//			   String query = "insert into csaweb.like (user_id,object_id,object_type,post_id) values('"+user.getId()+"','"+liker.getId()+"','"+liker.getCategory()+"','"+liker.getName()+"')" ;
+//			   logger.info(writeToMySql(query));
+//			   }
+//			   i++;
+//		   }
+//		   // 	logger.info(liker.getCategory());
+//		
+//		//String query = "insert into csaweb.user_info (user_id,user_first_name,user_last_name,user_fb_token) values('"+user.getId()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+token+"')" ;
+//		response.setContentType("text/plain");
+//		PrintWriter out = response.getWriter();
+//		
+//		out.println("Likes Count:-"+likes.getData().size());
+
+		response.getWriter().println(EDatabase.getConnectionStats());
 		//out.println("Testing Ajax Call from Javascript");
 		//out.println("Query is"+ query);
 		//out.println(writeToMySql(query));

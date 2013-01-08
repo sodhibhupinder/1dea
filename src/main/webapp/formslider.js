@@ -1,7 +1,7 @@
 $(document).ready(function(){
-  $("form").submit(function(e) {
-    e.preventDefault();
-  });
+//  $("form").submit(function(e) {
+//    e.preventDefault();
+//  });
   
   var clogin = $("#content-login");
   var cregister = $("#content-register");
