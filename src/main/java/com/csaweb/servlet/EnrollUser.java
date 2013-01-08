@@ -100,7 +100,12 @@ Date d = new Date();
 //		PrintWriter out = response.getWriter();
 //		
 //		out.println("Likes Count:-"+likes.getData().size());
+		try {
+			Connection con = EDatabase.borrowConnection();
+		} catch (SQLException e) {
 
+			e.printStackTrace();
+		}
 		response.getWriter().println(EDatabase.getConnectionStats());
 		//out.println("Testing Ajax Call from Javascript");
 		//out.println("Query is"+ query);

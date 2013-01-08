@@ -63,7 +63,7 @@ $(document).ready(function(){
       }; 
    
       // bind form using 'ajaxForm' 
-      $(clogin).ajaxForm(options); 
+      $('#login').ajaxForm(options); 
 
    
  
