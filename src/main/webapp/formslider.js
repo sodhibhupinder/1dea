@@ -79,8 +79,8 @@ $(document).ready(function(){
           };
    
       // bind form using 'ajaxForm' 
-      $('#login').ajaxForm(options); 
-      $('#register').ajaxForm(options1);
+     // $('#login').ajaxForm(options); 
+     // $('#register').ajaxForm(options1);
    
  
 });
