@@ -136,10 +136,10 @@ public class EnrollUser extends HttpServlet {
 		}
 
 		if (isValidLogon) {
-			response.sendRedirect("/HotClinic");
+			response.getWriter().println("Yo!, Logged in");
 		} else {
 			session.setAttribute("errorMsg", strErrMsg);
-			response.sendRedirect("/Error");
+			response.getWriter().println("Not Logged in");
 		}
 
 		// out.println("Testing Ajax Call from Javascript");
@@ -242,8 +242,8 @@ public class EnrollUser extends HttpServlet {
 			List<Object> result = EDatabase.getFirstColumn(
 					"SELECT COUNT(*) FROM USERS where EMAIL =? AND PASSWORD = ? ",
 					strUserName, strPassword);
-			String str = (String) result.get(0);
-			if (str.equals("1"))
+			Long value = (Long) result.get(0);
+			if (value==1)
 				isValid = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
