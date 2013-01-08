@@ -110,13 +110,13 @@ Date d = new Date();
 		response.getWriter().println(EDatabase.getConnectionStats());
 		
 		try {
-			List<Object[]> ls = EDatabase.get("SELECT * FROM user_info");
+			List<Object[]> ls = EDatabase.get("SELECT * FROM user_info where user_first_name=?","Bhupinder");
 			StringBuffer sb = new StringBuffer();
 			for(Object[] obj: ls)
 			{
-				String id = (String) obj[0];
-				String firstName =  (String) obj[1];
-				String lastName =  (String) obj[2];
+				String id = (String) obj[1];
+				String firstName =  (String) obj[2];
+				String lastName =  (String) obj[3];
 				sb.append("ID: " + id + ", First Name: " + firstName
 						+ ", Last Name: " + lastName + "<br/>");
 			}
