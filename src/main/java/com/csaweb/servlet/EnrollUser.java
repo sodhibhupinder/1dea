@@ -110,7 +110,7 @@ Date d = new Date();
 		response.getWriter().println(EDatabase.getConnectionStats());
 		
 		try {
-			List<Object[]> ls = EDatabase.get("SELECT * FROM csaweb.user_info");
+			List<Object[]> ls = EDatabase.get("SELECT * FROM user_info");
 			StringBuffer sb = new StringBuffer();
 			for(Object[] obj: ls)
 			{
@@ -136,7 +136,7 @@ Date d = new Date();
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+	
 		super.init(config);
 		
 		
