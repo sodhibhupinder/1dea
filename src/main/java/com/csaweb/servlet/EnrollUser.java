@@ -240,10 +240,10 @@ public class EnrollUser extends HttpServlet {
 		try {
 			Connection con = EDatabase.borrowConnection();
 			List<Object> result = EDatabase.getFirstColumn(
-					"SELECT EMAIL FROM USERS where EMAIL =? AND PASSWORD = ? ",
+					"SELECT COUNT(*) FROM USERS where EMAIL =? AND PASSWORD = ? ",
 					strUserName, strPassword);
-
-			if (result.equals(strUserName))
+			String str = (String) result.get(0);
+			if (str.equals("1"))
 				isValid = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
