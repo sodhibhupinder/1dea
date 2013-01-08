@@ -110,13 +110,15 @@ public class EnrollUser extends HttpServlet {
 		// //String query =
 		// "insert into csaweb.user_info (user_id,user_first_name,user_last_name,user_fb_token) values('"+user.getId()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+token+"')"
 		// ;
-		// response.setContentType("text/plain");
+		response.setContentType("text/plain");
 		// PrintWriter out = response.getWriter();
 		//
 		// out.println("Likes Count:-"+likes.getData().size());
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		System.out.println(email+"Email");
+		System.out.println(password+"Password");
 		String strErrMsg = null;
 		HttpSession session = request.getSession();
 		boolean isValidLogon = false;
@@ -126,9 +128,11 @@ public class EnrollUser extends HttpServlet {
 				session.setAttribute("userName", email);
 			} else {
 				strErrMsg = "User name or Password is invalid. Please try again.";
+				System.out.println(strErrMsg);
 			}
 		} catch (Exception e) {
 			strErrMsg = "Unable to validate user / password in database";
+			System.out.println(strErrMsg);
 		}
 
 		if (isValidLogon) {
@@ -236,7 +240,7 @@ public class EnrollUser extends HttpServlet {
 		try {
 			Connection con = EDatabase.borrowConnection();
 			List<Object> result = EDatabase.getFirstColumn(
-					"SELECT count(*) FROM users where email=?,password=?",
+					"SELECT email FROM users where email=?,password=?",
 					strUserName, strPassword);
 
 			if (result.equals("1"))
