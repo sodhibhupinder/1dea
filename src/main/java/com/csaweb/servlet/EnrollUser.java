@@ -110,11 +110,12 @@ public class EnrollUser extends HttpServlet {
 		// //String query =
 		// "insert into csaweb.user_info (user_id,user_first_name,user_last_name,user_fb_token) values('"+user.getId()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+token+"')"
 		// ;
-		response.setContentType("application/json");
+		//response.setContentType("application/json");
 		// PrintWriter out = response.getWriter();
 		//
 		// out.println("Likes Count:-"+likes.getData().size());
-
+		if(!request.getParameter("register").equals("true"))
+		{
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		System.out.println(email+"Email");
@@ -122,6 +123,7 @@ public class EnrollUser extends HttpServlet {
 		String strErrMsg = null;
 		HttpSession session = request.getSession();
 		boolean isValidLogon = false;
+		
 		try {
 			isValidLogon = authenticateLogin(email, password);
 			if (isValidLogon) {
@@ -141,7 +143,33 @@ public class EnrollUser extends HttpServlet {
 			session.setAttribute("errorMsg", strErrMsg);
 			response.getWriter().println("Not Logged in");
 		}
+		}
+		else
+		{
+			boolean isDone = false;
+			try {
+			String email = request.getParameter("newemail");
+			String fname = request.getParameter("fname");
+			String lname = request.getParameter("lname");
+			String fullname = fname +" "+ lname;
+			String password = request.getParameter("password1");
+			
+			
+			isDone	 = registerUser(fullname, password, email);
+			} catch (Exception e) {
 
+				e.printStackTrace();
+			}
+			if (isDone) {
+				response.getWriter().println("Yo!, Registered");
+			} else {
+				
+				response.getWriter().println("Not Registered");
+			}
+			
+		}
+		
+		
 		// out.println("Testing Ajax Call from Javascript");
 		// out.println("Query is"+ query);
 		// out.println(writeToMySql(query));
@@ -255,6 +283,28 @@ public class EnrollUser extends HttpServlet {
 		} finally {
 		}
 		return isValid;
+	}
+	
+	private boolean registerUser(String name, String strPassword, String email) throws Exception
+	{
+		boolean result = false;
+		try {
+			Connection con = EDatabase.borrowConnection();
+			int rowCount = EDatabase.update(
+					"insert into USERS values(?,?,?)",name, strPassword,email);
+			if (rowCount==1)
+				result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			System.out
+					.println("validateLogon: Error while validating password: "
+							+ e.getMessage());
+			throw e;
+		} finally {
+		}
+		
+		return result;
 	}
 
 }
