@@ -1114,7 +1114,7 @@ $.fn.selected = function(select) {
 };
 
 // expose debug var
-$.fn.ajaxSubmit.debug = false;
+$.fn.ajaxSubmit.debug = true;
 
 // helper fn for console logging
 function log() {
