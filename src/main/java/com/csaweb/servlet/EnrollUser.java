@@ -154,7 +154,7 @@ public class EnrollUser extends HttpServlet {
 			String fullname = fname +"-"+ lname;
 			String password = request.getParameter("password1");
 			
-			
+			System.out.println(email+fname+password +" ------values-----");
 			isDone	 = registerUser(fullname, password, email);
 			} catch (Exception e) {
 
@@ -291,7 +291,7 @@ public class EnrollUser extends HttpServlet {
 		try {
 			Connection con = EDatabase.borrowConnection();
 			int rowCount = EDatabase.update(
-					"insert into USERS values(?,?,?)",name, strPassword,email);
+					"INSERT INTO USERS VALUES (?,?,?)" ,name, strPassword,email);
 			if (rowCount==1)
 				result = true;
 		} catch (SQLException e) {
